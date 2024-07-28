@@ -14,6 +14,31 @@
 .kclogo{
   width:200px!important
 }
+.MuiToolbar-root{
+  background-color: white;
+}
+.MuiSvgIcon-root{
+  color:black
+}
+
+.ct{
+  margin-top:200px;
+  color:black
+}
+
+.hero{
+  background-image: url(../src/assets/watchherops.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:80vh;
+  margin-top: -40px;
+  opacity:0.8
+}
+.hometext{
+  color:white;
+  font-weight: bold;
+
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
