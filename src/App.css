@@ -32,12 +32,24 @@
   background-size: cover;
   height:80vh;
   margin-top: -40px;
-  opacity:0.8
+  opacity:0.8;
+  
 }
 .hometext{
   color:white;
   font-weight: bold;
 
+}
+
+.who{
+  margin-top: 55px; 
+  padding: 20px;
+  width: 75vw;
+  margin-left: 200px;
+}
+
+.homecards{
+  margin-left: 120px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
