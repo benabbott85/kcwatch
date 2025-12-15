@@ -660,7 +660,7 @@
 .presentation-page .h3-description,
 .index-page .h3-description {
     z-index: 3;
-    top: 50%;
+    top: 40%;
     position: absolute;
     width: 100%;
     text-align: center;
@@ -697,7 +697,7 @@
 
 .presentation-page .page-header,
 .index-page .page-header {
-    background: #d0aea8;
+    background: #fff;
 }
 
 .index-page .rellax-text-container {

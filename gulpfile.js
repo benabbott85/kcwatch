@@ -1,12 +1,12 @@
-var gulp         = require('gulp');
-var path         = require('path');
-var sass         = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps   = require('gulp-sourcemaps');
-var connect      = require('gulp-connect');
-var open         = require('gulp-open');
+const gulp         = require('gulp');
+const path         = require('path');
+const gulpSass     = require('gulp-dart-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps   = require('gulp-sourcemaps');
+const connect      = require('gulp-connect');
+const open         = require('gulp-open');
 
-var Paths = {
+const Paths = {
   HERE                 : './',
   DIST                 : 'dist/',
   CSS                  : './assets/css/',
@@ -14,27 +14,43 @@ var Paths = {
   SCSS                 : './assets/scss/**/**'
 };
 
-gulp.task('compile:scss', function () {
+// Compile SCSS
+function compileScss() {
   return gulp.src(Paths.SCSS_TOOLKIT_SOURCES)
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(gulpSass().on('error', gulpSass.logError))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write(Paths.HERE))
-    .pipe(gulp.dest(Paths.CSS));
-});
+    .pipe(gulp.dest(Paths.CSS))
+    .pipe(connect.reload());
+}
 
-gulp.task('watch', function () {
-  gulp.watch(Paths.SCSS, ['compile:scss']);
-});
+// Watch SCSS
+function watchFiles() {
+  gulp.watch(Paths.SCSS, compileScss);
+}
 
-gulp.task('server', function () {
+// Server
+function server() {
   connect.server({
     port: 9001,
     livereload: true
   });
-});
+}
 
-gulp.task('default', ['server', 'watch'], function () {
-  gulp.src(__filename)
-    .pipe(open({uri: 'http://localhost:9001/presentation.html'}));
-});
+// Open browser
+function openBrowser() {
+  return gulp.src(__filename)
+    .pipe(open({ uri: 'http://localhost:9001/presentation.html' }));
+}
+
+// Define tasks
+gulp.task('compile:scss', compileScss);
+gulp.task('watch', watchFiles);
+gulp.task('server', server);
+
+// Default task (runs server + watch in parallel, then opens browser)
+gulp.task('default', gulp.series(
+  gulp.parallel(server, watchFiles),
+  openBrowser
+));
