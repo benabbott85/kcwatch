@@ -1,7 +1,9 @@
 .tim-row {
     margin-bottom: 20px;
 }
-
+:root{
+    --primary: #f1e1ba;
+}
 /*      transitions */
 
 .presentation-page .front,
