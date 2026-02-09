@@ -18,7 +18,7 @@ const Paths = {
 function compileScss() {
   return gulp.src(Paths.SCSS_TOOLKIT_SOURCES)
     .pipe(sourcemaps.init())
-    .pipe(gulpSass().on('error', gulpSass.logError))
+    .pipe(gulpSass({quietDeps: true}).on('error', gulpSass.logError))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write(Paths.HERE))
     .pipe(gulp.dest(Paths.CSS))

@@ -4,6 +4,10 @@
 :root{
     --primary: #f1e1ba;
 }
+
+p{
+    font-weight:500;
+}
 /*      transitions */
 
 .presentation-page .front,
@@ -935,6 +939,9 @@
     .parallax .parallax-image img {
         height: 100%;
         width: auto;
+    }
+    .storefrontnav{
+        margin-top:-85px!important;
     }
 }
 
